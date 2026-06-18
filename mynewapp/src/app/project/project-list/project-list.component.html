@@ -1,0 +1,33 @@
+<section class="page-hero projects-hero">
+    <p class="label">Nuestros proyectos</p>
+    <h1>Acciones que nacen de escuchar, aprender y construir con las comunidades.</h1>
+</section>
+
+    <section class="projects-intro">
+    <p>
+        Desde su creación, Granitos de Arena Colombia ha impulsado iniciativas de educación,
+        nutrición, ayuda humanitaria, liderazgo juvenil y participación ciudadana en diferentes
+        regiones del país.
+    </p>
+    </section>
+
+    <section class="projects-grid">
+    <article class="project-card" *ngFor="let project of projects">
+        <div class="project-img" [ngClass]="project.imageClass">
+        <span>{{ project.year }}</span>
+        </div>
+
+        <div class="project-info">
+        <p>{{ project.location }}</p>
+        <h2>{{ project.name }}</h2>
+        <h4>{{ project.tag }}</h4>
+        <span>{{ project.description }}</span>
+
+        <div class="project-impact">
+            {{ project.impact }}
+        </div>
+
+        <a [routerLink]="['/projects', project.id]">Explorar proyecto →</a>
+        </div>
+    </article>
+</section>

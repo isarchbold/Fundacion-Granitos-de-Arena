@@ -1,0 +1,26 @@
+<section class="project-detail-hero" [ngClass]="project.imageClass">
+    <div class="project-detail-overlay">
+        <p class="label">{{ project.tag }}</p>
+        <h1>{{ project.name }}</h1>
+        <span>{{ project.location }} · {{ project.year }}</span>
+    </div>
+    </section>
+
+    <section class="project-detail-content">
+    <div>
+        <p class="label">Proyecto</p>
+        <h2>Una iniciativa construida junto a la comunidad.</h2>
+    </div>
+
+    <div>
+        <p>{{ project.description }}</p>
+
+        <div class="detail-actions">
+        <div class="detail-impact">
+            {{ project.impact }}
+        </div>
+
+        <a routerLink="/projects" class="btn-main">Volver a proyectos</a>
+        </div>
+    </div>
+</section>
