@@ -38,6 +38,18 @@
                 "input": "src"
               },
               {
+                "glob": "robots.txt",
+                "input": "src"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src"
+              },
+              {
+                "glob": "favicon.png",
+                "input": "src"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
