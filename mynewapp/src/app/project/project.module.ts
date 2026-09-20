@@ -13,6 +13,10 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
   imports: [
     CommonModule,
     RouterModule
+  ],
+  exports: [
+    ProjectListComponent,
+    ProjectDetailComponent
   ]
 })
 export class ProjectModule { }
