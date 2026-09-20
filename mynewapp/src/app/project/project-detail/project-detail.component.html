@@ -1,26 +1,162 @@
-<section class="project-detail-hero" [ngClass]="project.imageClass">
-    <div class="project-detail-overlay">
-        <p class="label">{{ project.tag }}</p>
-        <h1>{{ project.name }}</h1>
-        <span>{{ project.location }} · {{ project.year }}</span>
-    </div>
+<section class="project-notfound" *ngIf="notFound">
+    <h1>Ese proyecto no existe</h1>
+    <p>Puede que el enlace esté desactualizado.</p>
+    <a routerLink="/projects" class="btn-main">Ver todos los proyectos</a>
     </section>
 
-    <section class="project-detail-content">
-    <div>
-        <p class="label">Proyecto</p>
-        <h2>Una iniciativa construida junto a la comunidad.</h2>
+    <ng-container *ngIf="project as p">
+    <section class="project-detail-hero" [ngClass]="p.imageClass">
+        <div class="project-detail-overlay">
+        <h1>{{ p.name }}</h1>
+        <p class="project-detail-meta">{{ p.location }} · {{ p.year }}</p>
+        <span class="project-status-pill" *ngIf="p.status === 'activo'">En curso</span>
+        </div>
+    </section>
+
+    <section class="project-metrics-band" *ngIf="p.metrics.length">
+        <div class="metric" *ngFor="let metric of p.metrics">
+        <strong>{{ metric.value }}</strong>
+        <span class="metric-label">{{ metric.label }}</span>
+        <span class="metric-method" *ngIf="metric.method">{{ metric.method }}</span>
+        </div>
+    </section>
+
+    <section class="project-narrative">
+        <article>
+        <h2>Qué encontramos</h2>
+        <p>{{ p.challenge }}</p>
+        </article>
+
+        <article>
+        <h2>Cómo lo trabajamos</h2>
+        <p>{{ p.approach }}</p>
+        </article>
+
+        <article>
+        <h2>Qué cambió</h2>
+        <p>{{ p.outcome }}</p>
+        </article>
+
+        <article *ngIf="p.nextStep">
+        <h2>Qué sigue</h2>
+        <p>{{ p.nextStep }}</p>
+        </article>
+    </section>
+
+    <section class="project-gallery" *ngIf="p.photos.length">
+        <h2>En terreno</h2>
+
+        <div class="gallery-grid">
+        <figure *ngFor="let photo of p.photos; let i = index">
+            <button type="button" (click)="openPhoto(i)" [attr.aria-label]="'Ampliar: ' + photo.alt">
+            <img [src]="photo.src" [alt]="photo.alt" loading="lazy" decoding="async" />
+            </button>
+            <figcaption *ngIf="photo.caption">{{ photo.caption }}</figcaption>
+        </figure>
+        </div>
+    </section>
+
+    <div
+        class="lightbox"
+        *ngIf="activePhotoIndex !== null"
+        (click)="closePhoto()"
+        role="dialog"
+        aria-modal="true"
+    >
+        <button type="button" class="lightbox-close" (click)="closePhoto()" aria-label="Cerrar">
+        Cerrar
+        </button>
+        <img [src]="p.photos[activePhotoIndex].src" [alt]="p.photos[activePhotoIndex].alt" />
+        <p *ngIf="p.photos[activePhotoIndex].caption">
+        {{ p.photos[activePhotoIndex].caption }}
+        </p>
     </div>
 
-    <div>
-        <p>{{ project.description }}</p>
+    <section class="project-testimonials" *ngIf="p.testimonials.length">
+        <h2>Lo que nos dijeron</h2>
 
-        <div class="detail-actions">
-        <div class="detail-impact">
-            {{ project.impact }}
+        <blockquote *ngFor="let t of p.testimonials">
+        <p>{{ t.quote }}</p>
+        <footer>
+            <img *ngIf="t.photo" [src]="t.photo" [alt]="t.author" loading="lazy" />
+            <span>
+            <strong>{{ t.author }}</strong>
+            {{ t.role }}
+            </span>
+        </footer>
+        </blockquote>
+    </section>
+
+    <section class="project-timeline" *ngIf="p.timeline.length">
+        <h2>Cómo se desarrolló</h2>
+
+        <ol>
+        <li *ngFor="let milestone of p.timeline">
+            <time>{{ milestone.date }}</time>
+            <h3>{{ milestone.title }}</h3>
+            <p>{{ milestone.detail }}</p>
+        </li>
+        </ol>
+    </section>
+
+    <section class="project-trust" *ngIf="p.partners.length || p.report || p.press.length">
+        <div class="trust-partners" *ngIf="p.partners.length">
+        <h2>Con quién lo hicimos</h2>
+        <ul>
+            <li *ngFor="let partner of p.partners">
+            <a
+                *ngIf="partner.url; else plainPartner"
+                [href]="partner.url"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img *ngIf="partner.logo" [src]="partner.logo" [alt]="partner.name" loading="lazy" />
+                <span *ngIf="!partner.logo">{{ partner.name }}</span>
+            </a>
+            <ng-template #plainPartner>
+                <span>{{ partner.name }}</span>
+            </ng-template>
+            <small *ngIf="partner.kind">{{ partner.kind }}</small>
+            </li>
+        </ul>
         </div>
 
-        <a routerLink="/projects" class="btn-main">Volver a proyectos</a>
+        <div class="trust-docs">
+        <a
+            *ngIf="p.report"
+            class="btn-secondary"
+            [href]="p.report.url"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {{ p.report.label }}
+        </a>
+
+        <ul class="trust-press" *ngIf="p.press.length">
+            <li *ngFor="let item of p.press">
+            <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            <small>{{ item.outlet }}<span *ngIf="item.date"> · {{ item.date }}</span></small>
+            </li>
+        </ul>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="project-cta">
+        <h2>Este proyecto sigue necesitando manos</h2>
+        <div class="project-cta-actions">
+        <a routerLink="/volunteer" class="btn-main">Quiero ser voluntario</a>
+        <a routerLink="/projects" class="btn-secondary">Ver todos los proyectos</a>
+        </div>
+    </section>
+
+    <nav class="project-nav" aria-label="Otros proyectos">
+        <a *ngIf="previous" [routerLink]="['/projects', previous.id]">
+        <small>Anterior</small>
+        <span>{{ previous.name }}</span>
+        </a>
+        <a *ngIf="next" [routerLink]="['/projects', next.id]" class="is-next">
+        <small>Siguiente</small>
+        <span>{{ next.name }}</span>
+        </a>
+    </nav>
+</ng-container>

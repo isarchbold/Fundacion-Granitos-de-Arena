@@ -1239,7 +1239,7 @@
 }
 
 .project-pragma {
-  background-image: url("assets/pragmaradar.webp");
+  background-image: url("assets/pragma-radar.jpeg");
 }
 
 .project-liderazgo {
@@ -1606,4 +1606,1127 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* ==========================================================================
+   ÍNDICE DE PROYECTOS
+   Reemplaza los bloques del listado (choques, retícula, badges, filtros,
+   intro) por este. El detalle, galería, testimonios y línea de tiempo
+   siguen igual.
+   ========================================================================== */
 
+.project-index {
+  background: var(--dark);
+  color: var(--cream);
+  padding: 120px 8% 140px;
+}
+
+/* --- Encabezado ---------------------------------------------------------- */
+
+.index-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+  padding-bottom: 70px;
+}
+
+.index-intro {
+  margin: 0;
+  max-width: 46ch;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: rgba(255, 241, 210, 0.75);
+}
+
+.index-totals {
+  display: flex;
+  gap: 48px;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.index-totals div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.index-totals dd {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--yellow);
+  font-variant-numeric: tabular-nums;
+}
+
+.index-totals dt {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 241, 210, 0.45);
+}
+
+/* --- Filtros: texto, no botones ------------------------------------------ */
+
+.index-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-bottom: 20px;
+}
+
+.index-filters button {
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 241, 210, 0.45);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.index-filters button:hover {
+  color: var(--cream);
+}
+
+.index-filters button.is-active {
+  color: var(--yellow);
+  border-bottom-color: var(--yellow);
+}
+
+.index-filters button:focus-visible,
+.index-rows a:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 6px;
+}
+
+/* --- Filas ---------------------------------------------------------------- */
+
+.index-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 241, 210, 0.16);
+}
+
+.index-rows li {
+  border-bottom: 1px solid rgba(255, 241, 210, 0.16);
+}
+
+.index-rows a {
+  display: grid;
+  grid-template-columns: 64px 5.5rem minmax(0, 1fr) minmax(0, 13rem) 5.5rem;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 0;
+  color: var(--cream);
+  transition: padding 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease;
+}
+
+.index-rows a:hover {
+  padding-left: 22px;
+  padding-right: 22px;
+  color: var(--yellow);
+}
+
+.row-thumb {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.index-rows a:hover .row-thumb {
+  filter: none;
+  opacity: 1;
+}
+
+.row-year {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 241, 210, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+.row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.row-name {
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.row-place {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 241, 210, 0.45);
+}
+
+.row-figure {
+  justify-self: end;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 241, 210, 0.5);
+}
+
+.row-status {
+  justify-self: end;
+  padding: 5px 12px;
+  border: 1px solid var(--yellow);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  white-space: nowrap;
+}
+
+.index-empty {
+  padding: 80px 0;
+  font-size: 1.1rem;
+  color: rgba(255, 241, 210, 0.5);
+}
+
+@media (max-width: 1100px) {
+  .index-rows a {
+    grid-template-columns: 56px 5rem minmax(0, 1fr) 5.5rem;
+    gap: 22px;
+  }
+
+  .row-thumb {
+    width: 56px;
+    height: 56px;
+  }
+
+  .row-figure {
+    display: none;
+  }
+}
+
+/* --- Móvil: sin hover, la foto va inline ---------------------------------- */
+
+@media (max-width: 768px) {
+  .project-index {
+    padding: 70px 24px 90px;
+  }
+
+  .index-head {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 44px;
+  }
+
+  .index-totals {
+    justify-content: flex-start;
+    gap: 34px;
+  }
+
+  .index-totals dd {
+    font-size: 2rem;
+  }
+
+  .index-filters {
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+  }
+
+  .index-filters button {
+    white-space: nowrap;
+  }
+
+  .index-rows a {
+    grid-template-columns: 82px minmax(0, 1fr);
+    align-items: center;
+    gap: 18px;
+    padding: 22px 0;
+  }
+
+  .index-rows a:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row-thumb {
+    display: block;
+    grid-row: span 3;
+    width: 82px;
+    height: 82px;
+    border-radius: 2px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .row-year,
+  .row-place {
+    font-size: 0.75rem;
+  }
+
+  .row-name {
+    font-size: 1.15rem;
+  }
+
+  .row-figure {
+    display: block;
+    font-size: 0.78rem;
+  }
+
+  .row-status {
+    justify-self: start;
+    grid-column: 2;
+    margin-top: 6px;
+  }
+
+  /* El preview del cursor no aplica en táctil */
+  .index-preview {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index-rows a,
+  .index-filters button {
+    transition: none;
+  }
+
+  .index-rows a:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .index-preview {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   LISTADO DE PROYECTOS — versión minimal
+   Reemplaza únicamente estos bloques dentro del CSS que ya pegaste:
+   "ARREGLO DE CHOQUES", "RETÍCULA ASIMÉTRICA" y "BADGES Y MÉTRICAS EN LA TARJETA".
+   Todo lo demás (detalle, galería, testimonios, línea de tiempo) queda igual.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ARREGLO DE CHOQUES
+   .project-info p es eyebrow naranja en mayúsculas en tu CSS original.
+   Acá solo .project-place lo conserva.
+   -------------------------------------------------------------------------- */
+
+.project-info .project-place {
+  margin: 0 0 10px;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.project-info .project-headline {
+  margin: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.project-info .project-headline strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 1.7rem;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+}
+
+/* --------------------------------------------------------------------------
+   RETÍCULA
+   La tarjeta completa es el enlace: menos elementos, un solo objetivo de clic.
+   -------------------------------------------------------------------------- */
+
+.projects-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.project-card {
+  min-height: 0;
+  color: inherit;
+  border-radius: 28px;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Foto alta y vertical: deja que la imagen cargue el peso visual */
+.project-card .project-img {
+  height: 0;
+  padding-bottom: 78%;
+}
+
+.project-card .project-info {
+  padding: 26px 28px 30px;
+  flex-grow: 0;
+}
+
+.project-card .project-info h2 {
+  margin: 0 0 16px;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+}
+
+/* Un proyecto activo se destaca con un borde, no con más texto */
+.project-card:has(.project-status) {
+  outline: 2px solid var(--yellow);
+  outline-offset: -2px;
+}
+
+/* --------------------------------------------------------------------------
+   BADGES
+   -------------------------------------------------------------------------- */
+
+.project-img .project-year {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--dark);
+  font-weight: 900;
+  font-size: 0.82rem;
+}
+
+.project-img .project-status {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  bottom: auto;
+  left: auto;
+  z-index: 2;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  color: var(--dark);
+  font-weight: 900;
+  font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+   INTRO
+   -------------------------------------------------------------------------- */
+
+.projects-intro p {
+  max-width: 60ch;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.projects-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+  margin-top: 44px;
+  padding-top: 36px;
+  border-top: 1px dashed rgba(11, 16, 32, 0.25);
+}
+
+.projects-summary div {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-summary strong {
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 950;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--orange);
+}
+
+.projects-summary span {
+  margin-top: 8px;
+  font-weight: 850;
+  color: var(--dark);
+}
+
+/* --------------------------------------------------------------------------
+   MÓVIL
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .project-card .project-img {
+    padding-bottom: 62%;
+  }
+
+  .project-card .project-info {
+    padding: 22px 24px 26px;
+  }
+
+  .projects-summary {
+    gap: 30px;
+    margin-top: 32px;
+    padding-top: 26px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+    DETALLE: BANDA DE CIFRAS
+   -------------------------------------------------------------------------- */
+
+.project-metrics-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 50px;
+  padding: 90px 8%;
+  background: var(--dark);
+  color: var(--cream);
+}
+
+.project-metrics-band .metric strong {
+  display: block;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  font-weight: 950;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--yellow);
+}
+
+.project-metrics-band .metric-label {
+  display: block;
+  margin-top: 16px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--cream);
+}
+
+.project-metrics-band .metric-method {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(255, 241, 210, 0.6);
+  max-width: 30ch;
+}
+
+.project-detail-meta {
+  color: rgba(255, 241, 210, 0.9);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.project-status-pill {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  color: var(--dark);
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+    DETALLE: NARRATIVA
+   -------------------------------------------------------------------------- */
+
+.project-narrative {
+  display: grid;
+  gap: 70px;
+  padding: 110px 8%;
+  background: var(--white);
+}
+
+.project-narrative article {
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.project-narrative h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--dark);
+}
+
+.project-narrative p {
+  margin: 0;
+  max-width: 66ch;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+/* --------------------------------------------------------------------------
+    GALERÍA
+   -------------------------------------------------------------------------- */
+
+.project-gallery {
+  padding: 110px 8%;
+  background: var(--cream);
+}
+
+.project-gallery h2 {
+  margin: 0 0 50px;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--dark);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.gallery-grid figure:first-child {
+  grid-column: span 2;
+}
+
+.gallery-grid figure {
+  margin: 0;
+}
+
+.gallery-grid button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: none;
+  cursor: zoom-in;
+  transition: 0.35s ease;
+}
+
+.gallery-grid button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(11, 16, 32, 0.15);
+}
+
+.gallery-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery-grid figcaption {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-content: center;
+  gap: 20px;
+  padding: 40px;
+  background: rgba(11, 16, 32, 0.96);
+  backdrop-filter: blur(10px);
+  color: var(--cream);
+}
+
+.lightbox img {
+  max-width: min(90vw, 1100px);
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.lightbox p {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  padding: 12px 26px;
+  font: inherit;
+  font-weight: 900;
+  color: var(--cream);
+  background: none;
+  border: 2px solid var(--cream);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--cream);
+  color: var(--dark);
+}
+
+/* --------------------------------------------------------------------------
+    TESTIMONIOS
+   -------------------------------------------------------------------------- */
+
+.project-testimonials {
+  padding: 110px 8%;
+  background: var(--white);
+}
+
+.project-testimonials h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--dark);
+}
+
+.project-testimonials blockquote {
+  max-width: 58ch;
+  margin: 60px 0 0;
+  padding-left: 40px;
+  border-left: 5px solid var(--yellow);
+}
+
+.project-testimonials blockquote p {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--dark);
+  text-wrap: balance;
+}
+
+.project-testimonials footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.project-testimonials footer img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.project-testimonials footer strong {
+  display: block;
+  color: var(--dark);
+  font-weight: 950;
+}
+
+/* --------------------------------------------------------------------------
+    LÍNEA DE TIEMPO
+   -------------------------------------------------------------------------- */
+
+.project-timeline {
+  padding: 110px 8%;
+  background: var(--cream);
+}
+
+.project-timeline h2 {
+  margin: 0 0 50px;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--dark);
+}
+
+.project-timeline ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px dashed rgba(11, 16, 32, 0.2);
+}
+
+.project-timeline li {
+  position: relative;
+  padding: 0 0 50px 44px;
+}
+
+.project-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+}
+
+.project-timeline time {
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+}
+
+.project-timeline h3 {
+  margin: 10px 0 12px;
+  font-size: 1.5rem;
+  font-weight: 950;
+  color: var(--dark);
+}
+
+.project-timeline p {
+  margin: 0;
+  max-width: 62ch;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+/* --------------------------------------------------------------------------
+    ALIADOS, INFORMES Y PRENSA
+   -------------------------------------------------------------------------- */
+
+.project-trust {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 70px;
+  padding: 110px 8%;
+  background: var(--white);
+}
+
+.project-trust h2 {
+  margin: 0 0 30px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--dark);
+}
+
+.trust-partners ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.trust-partners li a,
+.trust-partners li > span {
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--dark);
+}
+
+.trust-partners li a {
+  color: var(--orange);
+}
+
+.trust-partners img {
+  max-height: 46px;
+  width: auto;
+}
+
+.trust-partners small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.trust-press {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+}
+
+.trust-press li {
+  margin-bottom: 22px;
+}
+
+.trust-press li a {
+  font-weight: 800;
+  line-height: 1.5;
+  color: var(--orange);
+}
+
+.trust-press small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+    CTA Y NAVEGACIÓN
+   -------------------------------------------------------------------------- */
+
+.project-cta {
+  padding: 110px 8%;
+  background: var(--cream);
+}
+
+.project-cta h2 {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--dark);
+}
+
+.project-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.project-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  background: var(--dark);
+}
+
+.project-nav a {
+  padding: 56px 8%;
+  color: var(--cream);
+  transition: 0.3s ease;
+}
+
+.project-nav a:hover {
+  background: rgba(255, 241, 210, 0.07);
+}
+
+.project-nav a.is-next {
+  text-align: right;
+  border-left: 1px dashed rgba(255, 241, 210, 0.3);
+}
+
+.project-nav small {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--yellow);
+}
+
+.project-nav span {
+  font-size: 1.5rem;
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.project-notfound {
+  max-width: 44rem;
+  padding: 220px 8% 140px;
+}
+
+.project-notfound h1 {
+  margin: 0 0 20px;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  color: var(--dark);
+}
+
+.project-notfound p {
+  margin-bottom: 40px;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+    RESPONSIVE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .project-card.is-featured {
+    flex-direction: column;
+  }
+
+  .project-card.is-featured .project-img {
+    flex: none;
+    min-height: 0;
+    height: 320px;
+  }
+
+  .project-card.is-featured .project-info {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-narrative {
+    gap: 50px;
+    padding: 70px 8%;
+  }
+
+  .project-narrative article {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gallery-grid figure:first-child {
+    grid-column: span 1;
+  }
+
+  .project-metrics-band {
+    gap: 36px;
+    padding: 60px 8%;
+  }
+
+  .project-nav a {
+    padding: 40px 8%;
+  }
+
+  .project-nav a.is-next {
+    text-align: left;
+    border-left: 0;
+    border-top: 1px dashed rgba(255, 241, 210, 0.3);
+  }
+
+  .project-testimonials blockquote {
+    padding-left: 24px;
+  }
+
+  .projects-summary {
+    gap: 36px;
+  }
+}
+
+/* Alinea las secciones nuevas con el padding de 24px que ya usás en móvil */
+@media (max-width: 768px) {
+  .project-filters,
+  .project-metrics-band,
+  .project-narrative,
+  .project-gallery,
+  .project-testimonials,
+  .project-timeline,
+  .project-trust,
+  .project-cta,
+  .projects-empty,
+  .project-notfound,
+  .project-nav a {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .project-card.is-featured .project-img,
+  .project-card:not(.is-featured) .project-img {
+    height: 230px;
+  }
+
+  .project-card.is-featured .project-info,
+  .project-card:not(.is-featured) .project-info {
+    padding: 26px;
+  }
+
+  .project-card.is-featured .project-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .projects-summary {
+    gap: 28px;
+    margin-top: 36px;
+    padding-top: 28px;
+  }
+
+  .filter-chip {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-chip,
+  .gallery-grid button,
+  .project-nav a,
+  .lightbox-close {
+    transition: none;
+  }
+
+  .filter-chip:hover,
+  .gallery-grid button:hover {
+    transform: none;
+  }
+}
+
+.project-detail-overlay h1 {
+  line-height: 1;
+  padding-bottom: 0.06em;
+}
+
+.project-detail-overlay .project-detail-meta {
+  display: block;
+  margin: 26px 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(255, 241, 210, 0.75);
+}
+
+.project-detail-overlay .project-status-pill {
+  display: inline-block;
+  width: auto;
+  margin-top: 26px;
+  font-size: 0.9rem;
+}

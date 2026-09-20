@@ -1,33 +1,42 @@
 <section class="page-hero projects-hero">
-    <p class="label">Nuestros proyectos</p>
     <h1>Acciones que nacen de escuchar, aprender y construir con las comunidades.</h1>
-</section>
-
-    <section class="projects-intro">
-    <p>
-        Desde su creación, Granitos de Arena Colombia ha impulsado iniciativas de educación,
-        nutrición, ayuda humanitaria, liderazgo juvenil y participación ciudadana en diferentes
-        regiones del país.
-    </p>
     </section>
 
-    <section class="projects-grid">
-    <article class="project-card" *ngFor="let project of projects">
-        <div class="project-img" [ngClass]="project.imageClass">
-        <span>{{ project.year }}</span>
-        </div>
+    <section class="project-index">
+    <header class="index-head">
+        <p class="index-intro">
+        Educación, nutrición, ayuda humanitaria y participación ciudadana en
+        La Guajira, Soacha, Córdoba, Chocó y a nivel nacional.
+        </p>
 
-        <div class="project-info">
-        <p>{{ project.location }}</p>
-        <h2>{{ project.name }}</h2>
-        <h4>{{ project.tag }}</h4>
-        <span>{{ project.description }}</span>
+        <dl class="index-totals">
+        <div><dt>Proyectos</dt><dd>{{ totals.projects }}</dd></div>
+        <div><dt>Territorios</dt><dd>{{ totals.regions }}</dd></div>
+        <div><dt>En curso</dt><dd>{{ totals.active }}</dd></div>
+        </dl>
+    </header>
 
-        <div class="project-impact">
-            {{ project.impact }}
-        </div>
+    <nav class="index-filters" aria-label="Filtrar por línea de acción">
+        <button type="button" [class.is-active]="activeLine === null" (click)="filterBy(null)">Todos</button>
+        <button type="button" *ngFor="let line of lines" [class.is-active]="activeLine === line" (click)="filterBy(line)">{{ line }}</button>
+    </nav>
 
-        <a [routerLink]="['/projects', project.id]">Explorar proyecto →</a>
-        </div>
-    </article>
+    <ol class="index-rows">
+        <li *ngFor="let project of projects; trackBy: trackById">
+        <a [routerLink]="['/projects', project.id]">
+            <span class="row-thumb" [ngClass]="project.imageClass" aria-hidden="true"></span>
+            <span class="row-year">{{ project.year }}</span>
+            <span class="row-main">
+            <span class="row-name">{{ project.name }}</span>
+            <span class="row-place">{{ project.region }}</span>
+            </span>
+            <span class="row-figure" *ngIf="project.metrics.length">{{ project.metrics[0].value }} {{ project.metrics[0].label }}</span>
+            <span class="row-status" *ngIf="project.status === 'activo'">En curso</span>
+        </a>
+        </li>
+    </ol>
+
+    <p class="index-empty" *ngIf="!projects.length">
+        Todavía no hay proyectos publicados en esta línea.
+    </p>
 </section>

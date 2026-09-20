@@ -14,7 +14,7 @@ export class ImpactListComponent implements OnInit {
   volunteers = 0;
 
   ngOnInit(): void {
-    this.animateValue('impactedChildren', 1000, 2000);
+    this.animateValue('impactedChildren', 550, 2000);
     this.animateValue('pragmaViews', 10000, 2000);
     this.animateValue('territories', 4, 1500);
     this.animateValue('volunteers', 100, 2000);
